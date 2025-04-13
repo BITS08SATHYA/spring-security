@@ -45,7 +45,6 @@ public class JwtUtils {
                     .expiration(new Date((new Date()).getTime() + jwtExpirationMs))
                     .signWith(key())
                     .compact();
-
         }
 
         private Key key() {
