@@ -76,7 +76,7 @@ public class GreetingsController {
                 .map(GrantedAuthority::getAuthority)
                 .toList();
 
-        LoginResponse response = new LoginResponse( userDetails.getUsername(), roles);
+        LoginResponse response = new LoginResponse( jwtToken,userDetails.getUsername(), roles);
 
         return ResponseEntity.ok(response);
     }

@@ -66,7 +66,7 @@ public class SecurityConfig {
 
 
 //        http.formLogin(Customizer.withDefaults());
-        http.httpBasic(Customizer.withDefaults());
+//        http.httpBasic(Customizer.withDefaults());
         http.headers(headers ->
                 headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
         http.csrf(AbstractHttpConfigurer::disable);
@@ -83,7 +83,7 @@ public class SecurityConfig {
     @Bean
     public CommandLineRunner initData(UserDetailsService userDetailsService) {
         return args -> {
-            JdbcUserDetailsManager manager = (JdbcUserDetailsManager) userDetailsService;
+//            JdbcUserDetailsManager manager = (JdbcUserDetailsManager) userDetailsService;
             UserDetails user1 = User.withUsername("user1")
                     .password(passwordEncoder().encode( "password1"))
                     .roles("USER")
@@ -100,27 +100,6 @@ public class SecurityConfig {
         };
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user1 = User.withUsername("user1")
-//                .password(passwordEncoder().encode( "password1"))
-//                .roles("USER")
-//                .build();
-//
-//        UserDetails admin = User.withUsername("admin1")
-//                .password(passwordEncoder().encode( "password1"))
-//                .roles("ADMIN")
-//                .build();
-//
-//
-//        JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager(dataSource);
-//        userDetailsManager.createUser(user1);
-//        userDetailsManager.createUser(admin);
-//
-//        return userDetailsManager;
-//
-////        return new InMemoryUserDetailsManager(user1, admin);
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
